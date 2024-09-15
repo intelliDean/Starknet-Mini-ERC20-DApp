@@ -1,0 +1,146 @@
+/* App.css */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #515b8a, #a97dd4);
+  font-family: "Poppins", sans-serif;
+  padding: 2rem;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px 20px;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #0077cc;
+}
+
+.connect-btn {
+  background-color: white;
+  color: #0077cc;
+  border: 2px solid #0077cc;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.outputs {
+  margin-top: 20px;
+  color: #333;
+  font-size: 1.2rem;
+  word-wrap: break-word; /* This ensures long text breaks into the next line */
+  white-space: normal; /* Allows the text to wrap */
+  max-width: 100%; /* Ensure the output doesn't exceed the card's width */
+  overflow-wrap: break-word; /* Breaks very long words to prevent overflow */
+}
+
+.card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0077cc;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  word-wrap: break-word; /* Ensure text inside the card wraps */
+}
+
+h1 {
+  color: #333;
+  text-align: center; /* Ensure title is centered */
+}
+
+.title {
+  margin-bottom: 0;
+  color: white;
+}
+
+.connect-btn:hover {
+  background-color: #005fa3;
+  color: white;
+}
+
+/* Buttons container styling */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.buttons-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px; /* Increase font size for buttons */
+  border-radius: 8px; /* Rounder buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Make buttons take full width of parent container */
+  max-width: 300px; /* Ensure buttons are the same width as form inputs */
+}
+
+.buttons-container button:hover {
+  background-color: #0056b3;
+}
+
+.function-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; /* Ensure form elements are centered */
+}
+
+.function-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #0077cc;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px; /* Ensure input fields are the same width as buttons */
+  text-align: center;
+}
+
+.function-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%; /* Make submit buttons full width */
+  max-width: 300px; /* Ensure they are the same width as form inputs */
+}
+
+.function-form button:hover {
+  background-color: #218838;
+}
+
+/* Ensure the main container is flex and center-aligned */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #4f4f4f;
+  margin: 15px 0;
+}

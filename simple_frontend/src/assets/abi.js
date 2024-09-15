@@ -1,5 +1,9 @@
 export const ABI = [
-  { type: "impl", name: "Mini", interface_name: "mini::MiniTrait" },
+  {
+    type: "impl",
+    name: "Mini",
+    interface_name: "mini::MiniTrait",
+  },
   {
     type: "interface",
     name: "mini::MiniTrait",
@@ -127,7 +131,11 @@ export const ABI = [
     name: "mini::Mini::Event",
     kind: "enum",
     variants: [
-      { name: "MintToken", type: "mini::Mini::MintToken", kind: "nested" },
+      {
+        name: "MintToken",
+        type: "mini::Mini::MintToken",
+        kind: "nested",
+      },
       {
         name: "TransferToken",
         type: "mini::Mini::TransferToken",

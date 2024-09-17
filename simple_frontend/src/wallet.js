@@ -1,4 +1,4 @@
-// wallet.js
+
 import { connect, disconnect } from "starknetkit";
 import { RpcProvider } from "starknet";
 

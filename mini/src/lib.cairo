@@ -9,18 +9,16 @@ pub trait MiniTrait<T> {
     fn owner(self: @T) -> ContractAddress;
 
     fn balance_of(self: @T, _owner: ContractAddress) -> u128;
-    
+
     fn mint(ref self: T, receiver: ContractAddress, amount: u128);
-    
+
     fn transfer(ref self: T, receiver: ContractAddress, _amount: u128);
-    
 }
 
 #[starknet::contract]
 pub mod Mini {
-
-    use core::starknet:: {ContractAddress, contract_address_const, get_caller_address};
-    use core::starknet::storage:: {
+    use core::starknet::{ContractAddress, contract_address_const, get_caller_address};
+    use core::starknet::storage::{
         Map, StoragePathEntry, StoragePointerReadAccess, StoragePointerWriteAccess
     };
 
@@ -51,7 +49,7 @@ pub mod Mini {
     struct TransferToken {
         #[key]
         sender: ContractAddress,
-        #[key] 
+        #[key]
         receiver: ContractAddress,
         amount: u128
     }
@@ -63,20 +61,18 @@ pub mod Mini {
     }
 
     #[constructor]
-    fn constructor (ref self: ContractState, _name: felt252, _symbol: felt252, _owner: ContractAddress) {
-        
+    fn constructor(
+        ref self: ContractState, _name: felt252, _symbol: felt252, _owner: ContractAddress
+    ) {
         self.name.write(_name);
         self.symbol.write(_symbol);
         self.owner.write(_owner);
 
-        self.emit(Deployer{
-            deployer: _owner
-        });
+        self.emit(Deployer { deployer: _owner });
     }
 
     #[abi(embed_v0)]
     impl Mini of super::MiniTrait<ContractState> {
-
         fn name(self: @ContractState) -> felt252 {
             self.name.read()
         }
@@ -99,16 +95,12 @@ pub mod Mini {
             self.address_zero(receiver);
 
             //this is where the minting is done
-            self.balances.entry(receiver).write(amount);
+            self.balances.entry(receiver).write(self.balances.entry(receiver).read() + amount);
 
-            self.emit(MintToken {
-                receiver: receiver,
-                amount: amount
-            })
+            self.emit(MintToken { receiver: receiver, amount: amount })
         }
 
         fn transfer(ref self: ContractState, receiver: ContractAddress, _amount: u128) {
-            
             self.address_zero(receiver);
 
             let caller = get_caller_address();
@@ -120,32 +112,19 @@ pub mod Mini {
 
             self.balances.entry(receiver).write(self.balances.entry(receiver).read() + _amount);
 
-            self.emit(TransferToken {
-                sender: caller,
-                receiver: receiver,
-                 amount: _amount
-            });
+            self.emit(TransferToken { sender: caller, receiver: receiver, amount: _amount });
         }
     }
 
 
     #[generate_trait]
     impl PrivateMethods of PrivateMethodsTrait {
-
         fn only_owner(self: @ContractState) {
-            
-            assert(
-                get_caller_address() == self.owner.read(), 
-                'Caller is not the owner'
-            );
+            assert(get_caller_address() == self.owner.read(), 'Caller is not the owner');
         }
 
         fn address_zero(self: @ContractState, receiver: ContractAddress) {
-
-            assert(
-                receiver != contract_address_const::<0>(), 
-                'Address zero not allowed'
-            );
+            assert(receiver != contract_address_const::<0>(), 'Address zero not allowed');
         }
     }
 }

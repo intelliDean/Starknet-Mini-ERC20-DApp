@@ -27,7 +27,9 @@ export const ABI = [
         name: "owner",
         inputs: [],
         outputs: [
-          { type: "core::starknet::contract_address::ContractAddress" },
+          {
+            type: "core::starknet::contract_address::ContractAddress",
+          },
         ],
         state_mutability: "view",
       },
@@ -51,7 +53,10 @@ export const ABI = [
             name: "receiver",
             type: "core::starknet::contract_address::ContractAddress",
           },
-          { name: "amount", type: "core::integer::u128" },
+          {
+            name: "amount",
+            type: "core::integer::u128",
+          },
         ],
         outputs: [],
         state_mutability: "external",
@@ -75,8 +80,14 @@ export const ABI = [
     type: "constructor",
     name: "constructor",
     inputs: [
-      { name: "_name", type: "core::felt252" },
-      { name: "_symbol", type: "core::felt252" },
+      {
+        name: "_name",
+        type: "core::felt252",
+      },
+      {
+        name: "_symbol",
+        type: "core::felt252",
+      },
       {
         name: "_owner",
         type: "core::starknet::contract_address::ContractAddress",
@@ -93,7 +104,11 @@ export const ABI = [
         type: "core::starknet::contract_address::ContractAddress",
         kind: "key",
       },
-      { name: "amount", type: "core::integer::u128", kind: "data" },
+      {
+        name: "amount",
+        type: "core::integer::u128",
+        kind: "data",
+      },
     ],
   },
   {
@@ -111,7 +126,11 @@ export const ABI = [
         type: "core::starknet::contract_address::ContractAddress",
         kind: "key",
       },
-      { name: "amount", type: "core::integer::u128", kind: "data" },
+      {
+        name: "amount",
+        type: "core::integer::u128",
+        kind: "data",
+      },
     ],
   },
   {
@@ -141,7 +160,11 @@ export const ABI = [
         type: "mini::Mini::TransferToken",
         kind: "nested",
       },
-      { name: "Deployer", type: "mini::Mini::Deployer", kind: "nested" },
+      {
+        name: "Deployer",
+        type: "mini::Mini::Deployer",
+        kind: "nested",
+      },
     ],
   },
 ];
